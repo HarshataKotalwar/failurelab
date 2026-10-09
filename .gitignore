@@ -1,0 +1,23 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Environment variables
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+dist/
+
+# IDE
+.vscode/
+
+# Logs
+*.log
