@@ -8,6 +8,7 @@ __pycache__/
 # Environment variables
 .env
 .env.*
+!.env.example
 
 # macOS
 .DS_Store
@@ -21,3 +22,6 @@ dist/
 
 # Logs
 *.log
+
+# Python build artifacts
+*.egg-info/
