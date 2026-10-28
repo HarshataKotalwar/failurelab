@@ -4,6 +4,8 @@ WORKDIR /app
 COPY services/order-service/pyproject.toml ./pyproject.toml
 RUN pip install --no-cache-dir .
 RUN pip install --no-cache-dir 'pytest>=8,<9'
+COPY services/shared/failurelab_observability.py ./failurelab_observability.py
+COPY services/shared/failurelab_failure.py ./failurelab_failure.py
 COPY services/order-service/app ./app
 COPY services/order-service/tests ./tests
 RUN useradd --create-home --uid 10001 appuser && chown -R appuser:appuser /app

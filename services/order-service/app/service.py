@@ -1,6 +1,7 @@
 import uuid
 
 import httpx
+from failurelab_observability import trace_context_headers
 from fastapi import HTTPException
 
 from app.config import settings
@@ -13,6 +14,7 @@ async def create_order(request: OrderRequest, client: httpx.AsyncClient) -> Orde
         reserve = await client.post(
             f"{settings.inventory_service_url.rstrip('/')}/reserve",
             json={"product_id": request.product_id, "quantity": request.quantity},
+            headers=trace_context_headers(),
         )
     except httpx.TimeoutException as exc:
         raise HTTPException(
@@ -34,6 +36,7 @@ async def create_order(request: OrderRequest, client: httpx.AsyncClient) -> Orde
         payment = await client.post(
             f"{settings.payment_service_url.rstrip('/')}/pay",
             json={"order_id": order_id, "amount": 100.0 * request.quantity},
+            headers=trace_context_headers(),
         )
     except httpx.TimeoutException as exc:
         raise HTTPException(

@@ -1,3 +1,9 @@
-from app.models.entities import Experiment, Incident, Service
+from app.models.entities import (
+    Experiment,
+    Incident,
+    InvestigationRecord,
+    Service,
+    VerificationRecord,
+)
 
-__all__ = ["Experiment", "Incident", "Service"]
+__all__ = ["Experiment", "Incident", "InvestigationRecord", "Service", "VerificationRecord"]

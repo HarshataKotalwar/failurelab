@@ -4,6 +4,7 @@ WORKDIR /app
 COPY services/control-api/pyproject.toml ./pyproject.toml
 RUN pip install --no-cache-dir .
 RUN pip install --no-cache-dir 'pytest>=8,<9'
+COPY services/shared/failurelab_observability.py ./failurelab_observability.py
 COPY services/control-api/app ./app
 COPY services/control-api/migrations ./migrations
 COPY services/control-api/tests ./tests

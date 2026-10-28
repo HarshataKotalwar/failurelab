@@ -38,6 +38,12 @@ def test_real_order_inventory_payment_flow() -> None:
         INVENTORY_SERVICE_URL=f"http://127.0.0.1:{inventory_port}",
         PAYMENT_SERVICE_URL=f"http://127.0.0.1:{payment_port}",
     )
+    env["PYTHONPATH"] = os.pathsep.join(
+        filter(
+            None,
+            [str(ROOT / "services" / "shared"), env.get("PYTHONPATH")],
+        )
+    )
     specs = [
         ("inventory-service", inventory_port, env),
         ("payment-service", payment_port, env),
